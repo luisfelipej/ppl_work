@@ -18,6 +18,7 @@ defmodule PplWorkWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :home
+    get "/spaces/:id", SpaceViewerController, :show
   end
 
   # API routes

@@ -1,6 +1,6 @@
-// If you want to use Phoenix channels, run `mix help phx.gen.channel`
-// to get started and then uncomment the line below.
-// import "./user_socket.js"
+// Import user socket and space canvas
+import "./user_socket.js"
+import { initSpaceCanvas } from "./space_canvas.js"
 
 // You can include dependencies in two ways.
 //
@@ -83,4 +83,9 @@ if (process.env.NODE_ENV === "development") {
   // Expose Phoenix globally for WebSocket testing
   window.Phoenix = { Socket }
 }
+
+// Initialize SpaceCanvas when DOM is ready
+document.addEventListener("DOMContentLoaded", () => {
+  initSpaceCanvas()
+})
 

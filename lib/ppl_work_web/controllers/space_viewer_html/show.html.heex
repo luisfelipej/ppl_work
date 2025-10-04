@@ -1,0 +1,77 @@
+<div class="h-screen flex flex-col bg-base-100">
+  <!-- Header -->
+  <div class="navbar bg-base-200 shadow-md">
+    <div class="flex-1">
+      <h1 class="text-xl font-bold px-4">
+        <%= @space.name %>
+      </h1>
+      <span class="text-sm text-base-content/60">
+        <%= @space.width %> x <%= @space.height %> units
+      </span>
+    </div>
+    <div class="flex-none">
+      <div class="flex items-center gap-4 px-4">
+        <span class="text-sm">
+          Playing as: <strong><%= @user.username %></strong>
+        </span>
+        <div id="connection-status" class="badge badge-error">
+          Disconnected
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <div class="flex-1 flex overflow-hidden">
+    <!-- Canvas Container -->
+    <div class="flex-1 overflow-auto bg-base-300 p-4">
+      <div class="flex items-center justify-center min-h-full">
+        <canvas
+          id="space-canvas"
+          data-space-id={@space.id}
+          data-user-id={@user.id}
+          data-username={@user.username}
+          data-space-width={@space.width}
+          data-space-height={@space.height}
+          data-initial-x={@initial_position.x}
+          data-initial-y={@initial_position.y}
+          class="border border-base-content/20 shadow-xl bg-white"
+        >
+          Your browser does not support HTML5 Canvas
+        </canvas>
+      </div>
+    </div>
+
+    <!-- Sidebar -->
+    <div class="w-64 bg-base-200 p-4 shadow-lg">
+      <h2 class="text-lg font-semibold mb-4">Users in Space</h2>
+
+      <!-- User List -->
+      <div id="user-list" class="space-y-2">
+        <div class="text-sm text-base-content/60">
+          Connecting...
+        </div>
+      </div>
+
+      <!-- Instructions -->
+      <div class="mt-8 pt-4 border-t border-base-content/10">
+        <h3 class="text-sm font-semibold mb-2">Controls</h3>
+        <ul class="text-xs text-base-content/70 space-y-1">
+          <li>• Click to move your avatar</li>
+          <li>• Green circle = you</li>
+          <li>• Blue circles = other users</li>
+        </ul>
+      </div>
+
+      <!-- Debug Info -->
+      <div class="mt-4 pt-4 border-t border-base-content/10">
+        <h3 class="text-sm font-semibold mb-2">Debug Info</h3>
+        <div id="debug-info" class="text-xs font-mono text-base-content/60">
+          <div>Position: <span id="debug-position">--</span></div>
+          <div>Direction: <span id="debug-direction">--</span></div>
+          <div>Users: <span id="debug-user-count">0</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
